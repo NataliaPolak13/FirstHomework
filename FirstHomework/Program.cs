@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.VisualBasic;
 
 
 namespace FirstHomework
@@ -31,15 +30,14 @@ namespace FirstHomework
                     Console.WriteLine("If you want to exit write 1");
                     Console.WriteLine("If you want to continue write 2");
                     Console.Write("Please choose what you would like to do: ");
-                    string number = Console.ReadLine(); 
-                    while((string.IsNullOrEmpty(number)||(string.IsNullOrWhiteSpace(number))|| (!Information.IsNumeric(number))))
+                    string number = Console.ReadLine();
+                    int option = 0;
+                    while(!int.TryParse(number, out option))
                     {
-                         Console.Write("Your input is empty. Try again: ");
-                         number = Console.ReadLine();
+                         Console.Write("Your input is empty. Try again: "); 
+                        number = Console.ReadLine();
                         
                     }
-
-                    int option = Convert.ToInt32(number);
 
                     switch (option)
                     {
