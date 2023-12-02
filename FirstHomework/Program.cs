@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.VisualBasic;
+
 
 namespace FirstHomework
 {
@@ -30,7 +32,7 @@ namespace FirstHomework
                     Console.WriteLine("If you want to continue write 2");
                     Console.Write("Please choose what you would like to do: ");
                     string number = Console.ReadLine(); 
-                    while((string.IsNullOrEmpty(number)||(string.IsNullOrWhiteSpace(number))))
+                    while((string.IsNullOrEmpty(number)||(string.IsNullOrWhiteSpace(number))|| (!Information.IsNumeric(number))))
                     {
                          Console.Write("Your input is empty. Try again: ");
                          number = Console.ReadLine();
@@ -111,7 +113,7 @@ namespace FirstHomework
                     resultx *= i;
                 }
 
-                Console.WriteLine($"Your result is: {resultx} for x");
+                Console.WriteLine($"Your result is: {resultx} ");
             }
 
         }
@@ -195,6 +197,11 @@ namespace FirstHomework
                     {
                         Console.WriteLine("Factorial is not possible for negative numbers ");
 
+                    }
+                    else if (firstNumber > 20)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Second number is to high. I can only count to number 20. Please try again.");
                     }
                     else
                         Factorial((ulong)firstNumber);
