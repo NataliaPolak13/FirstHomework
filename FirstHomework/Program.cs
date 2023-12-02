@@ -23,25 +23,23 @@ namespace FirstHomework
                     Console.WriteLine(e.Message);
                 }
 
-
-
-                static double GetNumber()
-                {
-                    if (!double.TryParse(Console.ReadLine(), out double input))
-                        throw new Exception("Your input is not a number. Try again. ");
-
-                    return input;
-                }
-
                 static void Clear()
                 {
                     Console.WriteLine();
                     Console.WriteLine("If you want to exit write 1");
                     Console.WriteLine("If you want to continue write 2");
                     Console.Write("Please choose what you would like to do: ");
-                    var Option = GetNumber();
+                    string number = Console.ReadLine(); 
+                    while((string.IsNullOrEmpty(number)||(string.IsNullOrWhiteSpace(number))))
+                    {
+                         Console.Write("Your input is empty. Try again: ");
+                         number = Console.ReadLine();
+                        
+                    }
 
-                    switch (Option)
+                    int option = Convert.ToInt32(number);
+
+                    switch (option)
                     {
                         case 1:
                             Console.WriteLine("Bye!");
@@ -52,7 +50,7 @@ namespace FirstHomework
                             Console.Clear();
                             break;
                         default:
-                            Console.WriteLine("Incorrect output. Try again.");
+                             Console.WriteLine("Incorrect output. Try again.");
                             break;
 
                     }
@@ -97,13 +95,8 @@ namespace FirstHomework
 
         static void Factorial(ulong x)
         {
-            if (x < 0)
-            {
-                Console.WriteLine("Factorial is not possible for negative numbers ");
-
-            }
             
-            else if (x == 0) 
+            if (x == 0) 
             {
                 Console.WriteLine("Your result is: 1");
             }
@@ -132,27 +125,39 @@ namespace FirstHomework
 
 
             string operation = "";
+            string firstChar = "";
             double firstNumber = 0;
             double secondNumber = 0;
-            char[] signs = ['!', '-', '+', '/', '*', '^'];
+            char[] signs = ['!', '+', '/', '*', '^', '-'];
 
-            for(int i = 0; i < signs.Length; i++)
+            //removing char from signs before mathematical expression
+            for (int i = 0; i < signs.Length; i++)
             {
-                /*
-                 * if before first number is one of signes we need to secure 
-                 * operation of splitting string
-                 * but tommorrow :)
-                 */
+                if (expression[0] == signs[i])
+                {
+                    firstChar = expression[0].ToString();
+                    expression=expression.Remove(0, 1);
+                    break;
+                }
+
+            }
+
+            for (int i = 0; i < signs.Length; i++)
+            {
+
                 string[] parts = expression.Split(signs[i]);
+
                 if (parts[0] != expression)
                 {
+                    if (firstChar == "-")
+                        parts[0] = "-" + parts[0];
+
                     operation = signs[i].ToString();
                     firstNumber = Convert.ToDouble(parts[0]);
 
                     if (signs[i] != '!') {
                         if (parts.GetLength(0) > 2)
                             parts[1] = operation + parts[2];
-                        var d = parts.GetLength(0);
                             secondNumber = Convert.ToDouble(parts[1]);
                     }
 
@@ -186,11 +191,18 @@ namespace FirstHomework
                     break;
 
                 case "!":
-                    Factorial((ulong)firstNumber);
-                    break;
+                    if (firstNumber < 0)
+                    {
+                        Console.WriteLine("Factorial is not possible for negative numbers ");
+
+                    }
+                    else
+                        Factorial((ulong)firstNumber);
+                        break;
 
                 default:
                     Console.WriteLine("Incorrect output. Try again.");
+                    Console.WriteLine();
                     break;
 
             }

@@ -19,9 +19,9 @@
                     Console.WriteLine("If you want to exit write 1");
                     Console.WriteLine("If you want to continue write 2");
                     Console.Write("Please choose what you would like to do: ");
-                    var Option = GetNumber();
+                    var option = GetNumber();
 
-                    switch (Option)
+                    switch (option)
                     {
                         case 1:
                             Console.WriteLine("Bye!");
@@ -42,13 +42,13 @@
                 {
                     Console.WriteLine("It's a calculator. Please write two numbers: ");
                     Console.Write("Your first number: ");
-                    var NumberOne = GetNumber();
+                    var numberOne = GetNumber();
                     Console.Write("Your second number: ");
-                    var NumberTwo = GetNumber();
+                    var numberTwo = GetNumber();
                     Menu();
                     Console.Write("Please select what would you like to do: ");
-                    var Option = Convert.ToInt32(Console.ReadLine());
-                    Calculator(NumberOne, NumberTwo, Option);
+                    var option = Convert.ToInt32(Console.ReadLine());
+                    Calculator(numberOne, numberTwo, option);
                     Clear();
 
                 }
@@ -98,10 +98,6 @@
 
         static void Exponentiation(double x, double y)
         {
-            if (y == 0)
-            {
-                Console.WriteLine("Your result is: 1");
-            }
 
             double result = Math.Pow(x, y);
 
@@ -155,34 +151,34 @@
             }
 
         }
-        public static void Calculator(double FirstNumber, double SecondNumber, int SelectedOption)
+        public static void Calculator(double firstNumber, double secondNumber, int selectedOption)
         {
 
-            switch (SelectedOption)
+            switch (selectedOption)
             {
 
                 case 1:
-                    Addition(FirstNumber, SecondNumber);
+                    Addition(firstNumber, secondNumber);
                     break;
 
                 case 2:
-                    Substraction(FirstNumber, SecondNumber);
+                    Substraction(firstNumber, secondNumber);
                     break;
 
                 case 3:
-                    Multipication(FirstNumber, SecondNumber);
+                    Multipication(firstNumber, secondNumber);
                     break;
 
                 case 4:
-                    Division(FirstNumber, SecondNumber);
+                    Division(firstNumber, secondNumber);
                     break;
 
                 case 5:
-                    Exponentiation(FirstNumber, SecondNumber);
+                    Exponentiation(firstNumber, secondNumber);
                     break;
 
                 case 6:
-                    Factorial((ulong)FirstNumber, (ulong)SecondNumber);
+                    Factorial((ulong)firstNumber, (ulong)secondNumber);
                     break;
 
                 case 7:
