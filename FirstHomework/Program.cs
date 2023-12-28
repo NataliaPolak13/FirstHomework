@@ -32,11 +32,11 @@ namespace FirstHomework
                     Console.Write("Please choose what you would like to do: ");
                     string number = Console.ReadLine();
                     int option = 0;
-                    while(!int.TryParse(number, out option))
+                    while (!int.TryParse(number, out option))
                     {
-                         Console.Write("Your input is empty. Try again: "); 
+                        Console.Write("Your input is empty. Try again: ");
                         number = Console.ReadLine();
-                        
+
                     }
 
                     switch (option)
@@ -50,7 +50,7 @@ namespace FirstHomework
                             Console.Clear();
                             break;
                         default:
-                             Console.WriteLine("Incorrect output. Try again.");
+                            Console.WriteLine("Incorrect output. Try again.");
                             break;
 
                     }
@@ -76,12 +76,15 @@ namespace FirstHomework
             Console.WriteLine($"Your result is: {x * y} ");
         }
 
-        static void Division(double x, double y)
+        static double Division(double x, double y)
         {
             if (y == 0)
+            {
                 Console.WriteLine("You cannot divide by zero! ");
+                return double.NaN;
+            }
             else
-                Console.WriteLine($"Your result is: {x / y} ");
+                return x / y; 
         }
 
         static void Exponentiation(double x, double y)
@@ -95,8 +98,8 @@ namespace FirstHomework
 
         static void Factorial(ulong x)
         {
-            
-            if (x == 0) 
+
+            if (x == 0)
             {
                 Console.WriteLine("Your result is: 1");
             }
@@ -136,7 +139,7 @@ namespace FirstHomework
                 if (expression[0] == signs[i])
                 {
                     firstChar = expression[0].ToString();
-                    expression=expression.Remove(0, 1);
+                    expression = expression.Remove(0, 1);
                     break;
                 }
 
@@ -155,10 +158,11 @@ namespace FirstHomework
                     operation = signs[i].ToString();
                     firstNumber = Convert.ToDouble(parts[0]);
 
-                    if (signs[i] != '!') {
+                    if (signs[i] != '!')
+                    {
                         if (parts.GetLength(0) > 2)
                             parts[1] = operation + parts[2];
-                            secondNumber = Convert.ToDouble(parts[1]);
+                        secondNumber = Convert.ToDouble(parts[1]);
                     }
 
                     break;
@@ -183,7 +187,7 @@ namespace FirstHomework
                     break;
 
                 case "/":
-                    Division(firstNumber, secondNumber);
+                    Console.WriteLine(Division(firstNumber, secondNumber));
                     break;
 
                 case "^":
@@ -203,7 +207,7 @@ namespace FirstHomework
                     }
                     else
                         Factorial((ulong)firstNumber);
-                        break;
+                    break;
 
                 default:
                     Console.WriteLine("Incorrect output. Try again.");
