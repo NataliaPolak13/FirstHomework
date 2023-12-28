@@ -187,7 +187,7 @@ namespace FirstHomework
                     break;
 
                 case "/":
-                    Console.WriteLine(Division(firstNumber, secondNumber));
+                    Console.WriteLine($"Your result is: {Division(firstNumber, secondNumber)}");
                     break;
 
                 case "^":
