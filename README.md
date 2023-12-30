@@ -1,4 +1,4 @@
-# FirstVolvoHomework
+# First Volvo Homework - Calculator
 
 ## Description of ExtraCalculator
 
